@@ -397,36 +397,22 @@
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 1.75rem 2.25rem;
+      gap: 0.5rem 0.6rem;
       max-width: 30rem;
     }
 
     .logo-item {
-      display: flex;
-      align-items: center;
-      opacity: 0.45;
-      transition: opacity 0.2s;
-    }
-
-    .logo-item:hover { opacity: 1; }
-
-    .logo-item img {
-      height: 17px;
-      width: auto;
-      max-width: 88px;
-      object-fit: contain;
-      filter: brightness(0) invert(0.9);
-      display: block;
-    }
-
-    /* Text fallback when logo image fails */
-    .logo-text {
       font-size: 10px;
       font-weight: 500;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 3px 8px;
+      transition: color 0.2s, border-color 0.2s;
     }
+
+    .logo-item:hover { color: var(--ink); border-color: var(--muted); }
 
 
     /* ── CONTACT ─────────────────────────────── */
@@ -596,15 +582,14 @@
       <a class="card-link"
          href="https://www.index.ngo/enquetes/enquete-morts-saint-louis-kanaky-nouvelle-caledonie/"
          target="_blank" rel="noopener">
-        <div class="card-img" id="img-01">
-          <span class="card-fallback">Index NGO · Le Monde</span>
-          <img src="https://www.hatvp.fr/wordpress/wp-content/uploads/2016/01/lemonde-logo.jpg"
-               alt="Morts à Saint-Louis"
-               loading="lazy"
-               onerror="document.getElementById('img-01').classList.add('img-failed')">
+        <div class="card-img">
+          <video src="https://www.index.ngo/wp-content/uploads/2025/07/Kanaky_1-1-2.mp4"
+                 autoplay muted loop playsinline
+                 style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          </video>
         </div>
         <div class="card-body">
-          <div class="card-outlet">Index NGO &nbsp;·&nbsp; Le Monde</div>
+          <div class="card-outlet">Index&nbsp;·&nbsp;Le Monde</div>
           <h3 class="card-title">En Kanaky-Nouvelle-Calédonie, enquête sur les trois morts de Saint-Louis</h3>
           <p class="card-desc">Enquête sur l'assassinat de trois militants Kanak par les forces spéciales françaises lors des émeutes de 2024. Terrain, reconstruction 3D, analyse de sources ouvertes.</p>
           <div class="card-foot">
@@ -617,22 +602,24 @@
 
     <!-- 02 -->
     <article class="card">
-      <div class="card-vid">
-        <iframe src="https://www.youtube.com/embed/1IAGHwi6mjY?rel=0&modestbranding=1"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen>
-        </iframe>
-      </div>
-      <a class="card-body-link"
-         href="https://www.index.ngo/enquetes/homicide-de-renee-good-par-lice-analyse-3d-preliminaire/"
+      <a class="card-link"
+         href="https://shop.index.ngo/eclairages-12-entretiens-et-analyses-sur-les-violences-d-etat"
          target="_blank" rel="noopener">
+        <div class="card-img" id="img-02">
+          <span class="card-fallback">RILE*books</span>
+          <img src="https://cdn.shopify.com/s/files/1/0946/7248/6773/files/1080X1080_FRONT_37bdce85-c2b1-4459-9880-30866f515043.jpg?v=1771423171"
+               alt="Éclairages"
+               loading="lazy"
+               style="object-fit: contain;"
+               onerror="document.getElementById('img-02').classList.add('img-failed')">
+        </div>
         <div class="card-body">
-          <div class="card-outlet">Index NGO</div>
-          <h3 class="card-title">Homicide de Renée Good par l'ICE : Analyse 3D préliminaire</h3>
-          <p class="card-desc">Un agent ICE abat Renée Good, 37 ans, à Minneapolis le 7 janvier 2026. La reconstruction 3D d'Index contredit la thèse officielle de la légitime défense.</p>
+          <div class="card-outlet">Index</div>
+          <h3 class="card-title">Éclairages — 12 entretiens sur les violences d'État</h3>
+          <p class="card-desc">Collection d'entretiens co-éditée avec Francesco Sebregondi. Sociologues, juristes, journalistes et militants portent leur regard sur les formes contemporaines de violence institutionnelle et sur la violence policière.</p>
           <div class="card-foot">
             <span class="card-year">2026</span>
-            <span class="card-tag">Enquête</span>
+            <span class="card-tag">Livre</span>
           </div>
         </div>
       </a>
@@ -645,7 +632,7 @@
          target="_blank" rel="noopener">
         <div class="card-img" id="img-03">
           <span class="card-fallback">Disclose</span>
-          <img src="https://disclose.ngo/assets/share/disclose_twitter.jpg"
+          <img src="https://admin.disclose.ngo/wp-content/uploads/2022/05/visuel_cover-1200x562.jpg"
                alt="General Electric — Disclose"
                loading="lazy"
                onerror="document.getElementById('img-03').classList.add('img-failed')">
@@ -688,17 +675,18 @@
 
     <!-- 05 -->
     <article class="card">
-      <div class="card-vid">
-        <iframe src="https://www.youtube.com/embed/-tZ-8v0v9dU?rel=0&modestbranding=1"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen>
-        </iframe>
-      </div>
-      <a class="card-body-link"
+      <a class="card-link"
          href="https://www.index.ngo/enquetes/homicide-de-bilal-m-la-reconstitution-3d-invalide-la-version-policiere/"
          target="_blank" rel="noopener">
+        <div class="card-img" id="img-05">
+          <span class="card-fallback">Index</span>
+          <img src="https://www.index.ngo/wp-content/uploads/2024/01/Vue_05_Transparence-1024x576.png"
+               alt="Homicide de Bilal M."
+               loading="lazy"
+               onerror="document.getElementById('img-05').classList.add('img-failed')">
+        </div>
         <div class="card-body">
-          <div class="card-outlet">Index NGO</div>
+          <div class="card-outlet">Index</div>
           <h3 class="card-title">Homicide de Bilal M. : la reconstitution 3D invalide la version policière</h3>
           <p class="card-desc">Abattu lors d'une expulsion à Pierrelaye en 2021, Bilal M. avait 34 ans. La reconstruction 3D d'Index contredit les témoignages policiers et la thèse de la légitime défense.</p>
           <div class="card-foot">
@@ -739,7 +727,7 @@
          target="_blank" rel="noopener">
         <div class="card-img" id="img-07">
           <span class="card-fallback">Il Manifesto</span>
-          <img src="https://static.ilmanifesto.it/2022/03/logo-mediakit-il-manifesto.png"
+          <img src="https://static.ilmanifesto.it/2023/07/sostituisce-02desk1-nel-testo-france-police-ap.jpg"
                alt="Processi in serie ai rivoltosi"
                loading="lazy"
                onerror="document.getElementById('img-07').classList.add('img-failed')">
@@ -854,22 +842,22 @@
     <!-- 12 -->
     <article class="card">
       <a class="card-link"
-         href="https://shop.index.ngo/eclairages-12-entretiens-et-analyses-sur-les-violences-d-etat"
+         href="https://www.index.ngo/enquetes/mort-dadam-et-raihane-les-incoherences-de-la-version-policiere-revelees/"
          target="_blank" rel="noopener">
         <div class="card-img" id="img-12">
-          <span class="card-fallback">RILE*books</span>
-          <img src="https://cdn.shopify.com/s/files/1/0946/7248/6773/files/1080X1080_FRONT_37bdce85-c2b1-4459-9880-30866f515043.jpg?v=1771423171"
-               alt="Éclairages"
+          <span class="card-fallback">Index</span>
+          <img src="https://www.index.ngo/wp-content/uploads/2024/03/abrs-visuel-couverture-min.webp"
+               alt="Mort d'Adam et Raihane"
                loading="lazy"
                onerror="document.getElementById('img-12').classList.add('img-failed')">
         </div>
         <div class="card-body">
           <div class="card-outlet">Index</div>
-          <h3 class="card-title">Éclairages — 12 entretiens sur les violences d'État</h3>
-          <p class="card-desc">Collection d'entretiens co-éditée avec Francesco Sebregondi. Sociologues, juristes, journalistes et militants portent leur regard sur les formes contemporaines de violence institutionnelle et sur la violence policière.</p>
+          <h3 class="card-title">Mort d'Adam et Raihane : les incohérences de la version policière révélées</h3>
+          <p class="card-desc">En août 2022, deux jeunes hommes sont tués par des tirs policiers à Vénissieux. La reconstruction 3D d'Index contredit la thèse officielle de la légitime défense.</p>
           <div class="card-foot">
-            <span class="card-year">2026</span>
-            <span class="card-tag">Livre</span>
+            <span class="card-year">2024</span>
+            <span class="card-tag">Enquête</span>
           </div>
         </div>
       </a>
@@ -902,98 +890,21 @@
       </div>
 
       <div class="logos-grid">
-
-        <a href="https://lemonde.fr" target="_blank" rel="noopener" class="logo-item" title="Le Monde">
-          <img src="https://logo.clearbit.com/lemonde.fr" alt="" loading="lazy"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-          <span class="logo-text">Le Monde</span>
-        </a>
-
-        <a href="https://mediapart.fr" target="_blank" rel="noopener" class="logo-item" title="Mediapart">
-          <img src="https://logo.clearbit.com/mediapart.fr" alt="" loading="lazy"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-          <span class="logo-text">Mediapart</span>
-        </a>
-
-        <a href="https://liberation.fr" target="_blank" rel="noopener" class="logo-item" title="Libération">
-          <img src="https://logo.clearbit.com/liberation.fr" alt="" loading="lazy"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-          <span class="logo-text">Libération</span>
-        </a>
-
-        <a href="https://disclose.ngo" target="_blank" rel="noopener" class="logo-item" title="Disclose">
-          <img src="https://logo.clearbit.com/disclose.ngo" alt="" loading="lazy"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-          <span class="logo-text">Disclose</span>
-        </a>
-
-        <a href="https://www.internazionale.it" target="_blank" rel="noopener" class="logo-item" title="Internazionale">
-          <img src="https://logo.clearbit.com/internazionale.it" alt="" loading="lazy"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-          <span class="logo-text">Internazionale</span>
-        </a>
-
-        <a href="https://www.middleeasteye.net" target="_blank" rel="noopener" class="logo-item" title="Middle East Eye">
-          <img src="https://logo.clearbit.com/middleeasteye.net" alt="" loading="lazy"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-          <span class="logo-text">Middle East Eye</span>
-        </a>
-
-        <a href="https://www.nouvelobs.com" target="_blank" rel="noopener" class="logo-item" title="Le Nouvel Obs">
-          <img src="https://logo.clearbit.com/nouvelobs.com" alt="" loading="lazy"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-          <span class="logo-text">Le Nouvel Obs</span>
-        </a>
-
-        <a href="https://www.ilmanifesto.it" target="_blank" rel="noopener" class="logo-item" title="Il Manifesto">
-          <img src="https://logo.clearbit.com/ilmanifesto.it" alt="" loading="lazy"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-          <span class="logo-text">Il Manifesto</span>
-        </a>
-
-        <a href="https://www.espresso.repubblica.it" target="_blank" rel="noopener" class="logo-item" title="L'Espresso">
-          <img src="https://logo.clearbit.com/espresso.repubblica.it" alt="" loading="lazy"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-          <span class="logo-text">L'Espresso</span>
-        </a>
-
-        <a href="https://www.canalplus.com" target="_blank" rel="noopener" class="logo-item" title="Canal+">
-          <img src="https://logo.clearbit.com/canalplus.com" alt="" loading="lazy"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-          <span class="logo-text">Canal+</span>
-        </a>
-
-        <a href="https://www.rai.it" target="_blank" rel="noopener" class="logo-item" title="Rai">
-          <img src="https://logo.clearbit.com/rai.it" alt="" loading="lazy"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-          <span class="logo-text">Rai</span>
-        </a>
-
-        <a href="https://www.lemediatv.fr" target="_blank" rel="noopener" class="logo-item" title="Le Média">
-          <img src="https://logo.clearbit.com/lemediatv.fr" alt="" loading="lazy"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-          <span class="logo-text">Le Média</span>
-        </a>
-
-        <a href="https://orientxxi.info" target="_blank" rel="noopener" class="logo-item" title="Orient XXI">
-          <img src="https://logo.clearbit.com/orientxxi.info" alt="" loading="lazy"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-          <span class="logo-text">Orient XXI</span>
-        </a>
-        
-        <a href="" target="_blank" rel="noopener" class="logo-item" title="MSNBC">
-          <img src="https://logo.clearbit.com/orientxxi.info" alt="" loading="lazy"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-          <span class="logo-text">MSNBC</span>
-        </a>
-
-        <a href="" target="_blank" rel="noopener" class="logo-item" title="MSNBC">
-          <img src="https://logo.clearbit.com/orientxxi.info" alt="" loading="lazy"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-          <span class="logo-text">Domani</span>
-        </a>
-
-
+        <a href="https://www.lemonde.fr/signataires/filippo-ortona/" target="_blank" rel="noopener" class="logo-item">Le Monde</a>
+        <a href="https://www.mediapart.fr/search?search_word=Filippo+Ortona" target="_blank" rel="noopener" class="logo-item">Mediapart</a>
+        <a href="https://www.liberation.fr/recherche/?query=Filippo%20Ortona" target="_blank" rel="noopener" class="logo-item">Libération</a>
+        <a href="https://disclose.ngo/fr/article/general-electric-800-millions-euros-transferes-de-france-vers-des-paradis-fiscaux" target="_blank" rel="noopener" class="logo-item">Disclose</a>
+        <a href="https://www.internazionale.it/video/2018/05/02/i-dannati-di-ventimiglia" target="_blank" rel="noopener" class="logo-item">Internazionale</a>
+        <a href="https://www.middleeasteye.net/fr/users/filippo-ortona" target="_blank" rel="noopener" class="logo-item">Middle East Eye</a>
+        <a href="https://www.nouvelobs.com/monde/20180808.OBS0658/comment-la-turquie-a-profite-de-l-offensive-contre-les-kurdes-pour-detruire-leur-capitale.html" target="_blank" rel="noopener" class="logo-item">Le Nouvel Obs</a>
+        <a href="https://www.ilmanifesto.it" target="_blank" rel="noopener" class="logo-item">Il Manifesto</a>
+        <a href="https://lespresso.it/g/filippo-ortona-da-parigi?author_name=Filippo+Ortona+da+Parigi&author_id=992" target="_blank" rel="noopener" class="logo-item">L'Espresso</a>
+        <a href="https://www.canalplus.com" target="_blank" rel="noopener" class="logo-item">Canal+</a>
+        <a href="https://www.raiplaysound.it/playlist/unavocenellanottestoriadiunaradiopartigiana?wt_mc=2.social.tw.tresoldi.&wt" target="_blank" rel="noopener" class="logo-item">Rai</a>
+        <a href="https://www.lemediatv.fr/auteurs/filippo-ortona-704Fp-c7QEeTk_KtkF4SXQ/emissions" target="_blank" rel="noopener" class="logo-item">Le Média</a>
+        <a href="https://orientxxi.info/les-kurdes-qui-rient-les-kurdes-qui-pleurent,2529" target="_blank" rel="noopener" class="logo-item">Orient XXI</a>
+        <a href="https://www.ms.now/msnbc/watch/and-then-hell-broke-loose-367963715731" target="_blank" rel="noopener" class="logo-item">MSNBC</a>
+        <a href="https://www.editorialedomani.it/politica/europa/nel-villaggio-dei-delusi-dove-eric-zemmour-tenta-il-sorpasso-su-marine-le-pen-gunxa3ed" target="_blank" rel="noopener" class="logo-item">Domani</a>
       </div><!-- /logos-grid -->
     </div>
 
