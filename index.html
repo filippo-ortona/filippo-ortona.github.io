@@ -14,7 +14,7 @@
     :root {
       --bg:     #0c0c0a;
       --ink:    #e6e3dd;
-      --muted:  #686560;
+      --muted:  #8c8880;
       --border: #232019;
       --serif:  'EB Garamond', Georgia, serif;
       --sans:   'Inter', system-ui, sans-serif;
@@ -130,6 +130,11 @@
       border-bottom: 1px solid var(--border);
     }
 
+    .travaux-inner {
+      width: 75%;
+      margin: 0 auto;
+    }
+
     .section-label {
       font-size: 10px;
       font-weight: 500;
@@ -150,6 +155,32 @@
     }
 
     .card {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .card-stretched-link {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .card:hover {
+      background: rgba(255, 255, 255, 0.025);
+    }
+
+    .card:has(.card-stretched-link:hover) .card-title {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .card-inner-link {
+      position: relative;
+      z-index: 1;
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 3px;
     }
 
     .card-link {
@@ -196,7 +227,8 @@
       z-index: 1;
     }
 
-    .card-link:hover .card-img img {
+    .card-link:hover .card-img img,
+    .card:has(.card-stretched-link:hover) .card-img img {
       transform: scale(1.04);
     }
 
@@ -207,18 +239,23 @@
 
     /* Card body */
     .card-body {
-      padding: 1.25rem 1.4rem 1.4rem;
+      padding: 1.25rem 1.4rem 1.4rem 1.4rem;
       display: flex;
       flex-direction: column;
       flex: 1;
+      gap: 0;
     }
+
+    .card-outlet  { margin-bottom: 0.45rem; }
+    .card-title   { margin-bottom: 0.55rem; }
+    .card-desc    { margin-bottom: 0; flex: 1; }
+    .card-foot    { margin-top: 1rem; padding-top: 0.75rem; border-top: 1px solid var(--border); }
 
     .card-outlet {
       font-size: 10px;
       letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--muted);
-      margin-bottom: 0.5rem;
     }
 
     .card-title {
@@ -226,11 +263,10 @@
       font-size: clamp(16px, 1.4vw, 20px);
       font-weight: 400;
       line-height: 1.2;
-      margin-bottom: 0.6rem;
-      flex: 1;
     }
 
-    .card-link:hover .card-title {
+    .card-link:hover .card-title,
+    .card-body-link:hover .card-title {
       text-decoration: underline;
       text-underline-offset: 3px;
     }
@@ -239,7 +275,6 @@
       font-size: 12px;
       color: var(--muted);
       line-height: 1.6;
-      margin-bottom: 1.1rem;
     }
 
     .card-foot {
@@ -247,7 +282,6 @@
       align-items: center;
       justify-content: space-between;
       gap: 0.5rem;
-      margin-top: auto;
     }
 
     .card-year {
@@ -287,6 +321,10 @@
       flex-direction: column;
       flex: 1;
       transition: background 0.2s;
+    }
+
+    .card-body-link .card-body {
+      flex: 1;
     }
 
     .card-body-link:hover {
@@ -489,6 +527,7 @@
     @media (max-width: 768px) {
       nav     { padding: 1.5rem 1.5rem 1rem; align-items: flex-start; flex-direction: column; gap: 1rem; }
       .hero   { padding: 0 0 3rem; }
+      .travaux-inner { width: 100%; }
       section { padding: 3.5rem 1.5rem; }
       footer  { padding: 2rem 1.5rem; }
 
@@ -547,6 +586,7 @@
 
 <!-- ── TRAVAUX ── -->
 <section id="travaux">
+  <div class="travaux-inner">
   <div class="section-label">Travaux sélectionnés</div>
 
   <div class="works-grid">
@@ -789,26 +829,26 @@
 
     <!-- 11 -->
     <article class="card">
-      <a class="card-link"
+      <a class="card-stretched-link"
          href="https://www.mediapart.fr/journal/international/260116/crash-aerien-dustica-tragedie-italienne-missile-francais"
-         target="_blank" rel="noopener">
-        <div class="card-img" id="img-11">
-          <span class="card-fallback">Canal+ · CAPA</span>
-          <img src="Ustica.png"
-               alt="Ustica"
-               loading="lazy"
-               onerror="document.getElementById('img-11').classList.add('img-failed')">
+         target="_blank" rel="noopener"
+         aria-label="Ustica : Une bavure française?"></a>
+      <div class="card-img" id="img-11">
+        <span class="card-fallback">Canal+ · CAPA</span>
+        <img src="Ustica.png"
+             alt="Ustica"
+             loading="lazy"
+             onerror="document.getElementById('img-11').classList.add('img-failed')">
+      </div>
+      <div class="card-body">
+        <div class="card-outlet">CAPA, Canal+ / Mediapart</div>
+        <h3 class="card-title">Ustica : Une bavure française?</h3>
+        <p class="card-desc">Investigation sur les responsabilités françaises dans le crash aérien d'Ustica du 27 juin 1980. <a class="card-inner-link" href="https://vimeo.com/294577867" target="_blank" rel="noopener">Voir l'investigation.</a></p>
+        <div class="card-foot">
+          <span class="card-year">2015</span>
+          <span class="card-tag">Enquête</span>
         </div>
-        <div class="card-body">
-          <div class="card-outlet">CAPA, Canal+ / Mediapart</div>
-          <h3 class="card-title">Ustica : Une bavure française?</h3>
-          <p class="card-desc">Investigation sur les responsabilités françaises dans le crash aérien d'Ustica du 27 juin 1980.</p>
-          <div class="card-foot">
-            <span class="card-year">2015</span>
-            <span class="card-tag">Enquête</span>
-          </div>
-        </div>
-      </a>
+      </div>
     </article>
 
     <!-- 12 -->
@@ -840,6 +880,7 @@
   <a class="works-more" href="https://muckrack.com/filippo-ortona" target="_blank" rel="noopener">
     Portfolio complet &nbsp;→
   </a>
+  </div><!-- /travaux-inner -->
 </section>
 
 
