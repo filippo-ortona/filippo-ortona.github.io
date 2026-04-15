@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Filippo Ortona — Journaliste & JRI</title>
+  <meta name="description" content="Filippo Ortona — Journaliste et reporter d'images. Enquêtes et reportages en presse écrite, vidéo et radio.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:     #0c0c0a;
+      --ink:    #e6e3dd;
+      --muted:  #686560;
+      --border: #232019;
+      --serif:  'EB Garamond', Georgia, serif;
+      --sans:   'Inter', system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.6;
+      background: var(--bg);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+
+    /* ── NAV ─────────────────────────────────── */
+
+    nav {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      padding: 2rem 2.5rem 1.25rem;
+    }
+
+    .nav-identity {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--ink); }
+
+
+    /* ── HERO ────────────────────────────────── */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 0 0 4rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-video-wrap {
+      flex: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-video-inner {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      background: #111110;
+    }
+
+    .hero-video-inner iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .hero-name {
+      font-family: var(--serif);
+      font-size: clamp(16px, 2.2vw, 30px);
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: -0.015em;
+    }
+
+    .hero-rule {
+      width: 28px;
+      height: 1px;
+      background: var(--muted);
+      margin: 1rem 0 0.75rem;
+    }
+
+    .hero-sub {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+
+    /* ── SECTION COMMONS ─────────────────────── */
+
+    section {
+      padding: 5rem 2.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 3.5rem;
+    }
+
+
+    /* ── WORKS GRID ──────────────────────────── */
+
+    .works-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      margin-bottom: 2.5rem;
+    }
+
+    .card {
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .card-link {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      transition: background 0.2s;
+    }
+
+    .card-link:hover {
+      background: rgba(255, 255, 255, 0.025);
+    }
+
+    /* Card image area */
+    .card-img {
+      aspect-ratio: 16 / 9;
+      background: #111110;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Fallback text behind the image */
+    .card-fallback {
+      font-family: var(--serif);
+      font-size: 14px;
+      font-style: italic;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      position: relative;
+      z-index: 0;
+    }
+
+    .card-img img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+      z-index: 1;
+    }
+
+    .card-link:hover .card-img img {
+      transform: scale(1.04);
+    }
+
+    /* Hide broken images — fallback text shows through */
+    .card-img.img-failed img {
+      display: none;
+    }
+
+    /* Card body */
+    .card-body {
+      padding: 1.25rem 1.4rem 1.4rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .card-outlet {
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .card-title {
+      font-family: var(--serif);
+      font-size: clamp(16px, 1.4vw, 20px);
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 0.6rem;
+      flex: 1;
+    }
+
+    .card-link:hover .card-title {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .card-desc {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 1.1rem;
+    }
+
+    .card-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-top: auto;
+    }
+
+    .card-year {
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+    }
+
+    .card-tag {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 2px 7px;
+    }
+
+    /* Card with video embed (iframe not inside <a>) */
+    .card-vid {
+      aspect-ratio: 16 / 9;
+      background: #111110;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .card-vid iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .card-body-link {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      transition: background 0.2s;
+    }
+
+    .card-body-link:hover {
+      background: rgba(255, 255, 255, 0.025);
+    }
+
+    .card-body-link:hover .card-title {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .works-more {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      transition: color 0.2s;
+    }
+
+    .works-more:hover { color: var(--ink); }
+
+
+    /* ── ABOUT ───────────────────────────────── */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .about-identity {
+      position: sticky;
+      top: 68px;
+    }
+
+    .about-name {
+      font-family: var(--serif);
+      font-size: 26px;
+      font-weight: 400;
+      margin-bottom: 0.4rem;
+    }
+
+    .about-role {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .about-text {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.85;
+      color: #a8a49e;
+      margin-bottom: 2rem;
+    }
+
+    .about-text p + p { margin-top: 1em; }
+
+    .about-text strong { font-weight: 500; color: var(--ink); }
+
+
+    /* ── LOGOS GRID ──────────────────────────── */
+
+    .logos-grid {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.75rem 2.25rem;
+    }
+
+    .logo-item {
+      display: flex;
+      align-items: center;
+      opacity: 0.45;
+      transition: opacity 0.2s;
+    }
+
+    .logo-item:hover { opacity: 1; }
+
+    .logo-item img {
+      height: 17px;
+      width: auto;
+      max-width: 88px;
+      object-fit: contain;
+      filter: brightness(0) invert(0.9);
+      display: block;
+    }
+
+    /* Text fallback when logo image fails */
+    .logo-text {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+
+    /* ── CONTACT ─────────────────────────────── */
+
+    .contact-headline {
+      font-family: var(--serif);
+      font-size: clamp(32px, 5vw, 62px);
+      font-weight: 400;
+      line-height: 1.05;
+      margin-bottom: 2.5rem;
+    }
+
+    /* Social icon buttons */
+    .contact-socials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin-bottom: 2rem;
+    }
+
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 0.6rem 1.1rem;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .social-btn:hover {
+      border-color: var(--ink);
+      color: var(--ink);
+    }
+
+    .social-btn svg {
+      width: 13px;
+      height: 13px;
+      flex-shrink: 0;
+    }
+
+    /* Secondary links */
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .contact-link {
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      transition: color 0.2s;
+    }
+
+    .contact-link:hover { color: var(--ink); }
+
+
+    /* ── FOOTER ──────────────────────────────── */
+
+    footer {
+      padding: 2rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-name {
+      font-family: var(--serif);
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .footer-handle {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+
+    .footer-handle:hover { color: var(--ink); }
+
+
+    /* ── RESPONSIVE ──────────────────────────── */
+
+    @media (max-width: 1100px) {
+      .works-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      nav     { padding: 1.5rem 1.5rem 1rem; align-items: flex-start; flex-direction: column; gap: 1rem; }
+      .hero   { padding: 0 0 3rem; }
+      section { padding: 3.5rem 1.5rem; }
+      footer  { padding: 2rem 1.5rem; }
+
+      .works-grid { grid-template-columns: 1fr; }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .about-identity { position: static; }
+
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .nav-links { gap: 1.25rem; }
+      .contact-socials { gap: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+
+<!-- ── HERO ── -->
+<header class="hero">
+
+  <!-- ── NAV ── -->
+  <nav>
+    <div class="nav-identity">
+      <h1 class="hero-name">Filippo Ortona</h1>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#travaux">Travaux</a></li>
+      <li><a href="#apropos">À propos</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero-video-wrap">
+    <div class="hero-video-inner">
+      <iframe
+        src="https://player.vimeo.com/video/646586751?color=e6e3dd&title=0&byline=0&portrait=0&dnt=1"
+        allow="autoplay; fullscreen; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+
+</header>
+
+
+<!-- ── TRAVAUX ── -->
+<section id="travaux">
+  <div class="section-label">Travaux sélectionnés</div>
+
+  <div class="works-grid">
+
+    <!-- 01 -->
+    <article class="card">
+      <a class="card-link"
+         href="https://www.index.ngo/enquetes/enquete-morts-saint-louis-kanaky-nouvelle-caledonie/"
+         target="_blank" rel="noopener">
+        <div class="card-img" id="img-01">
+          <span class="card-fallback">Index NGO · Le Monde</span>
+          <img src="https://www.hatvp.fr/wordpress/wp-content/uploads/2016/01/lemonde-logo.jpg"
+               alt="Morts à Saint-Louis"
+               loading="lazy"
+               onerror="document.getElementById('img-01').classList.add('img-failed')">
+        </div>
+        <div class="card-body">
+          <div class="card-outlet">Index NGO &nbsp;·&nbsp; Le Monde</div>
+          <h3 class="card-title">En Kanaky-Nouvelle-Calédonie, enquête sur les trois morts de Saint-Louis</h3>
+          <p class="card-desc">Enquête sur l'assassinat de trois militants Kanak par les forces spéciales françaises lors des émeutes de 2024. Terrain, reconstruction 3D, analyse de sources ouvertes.</p>
+          <div class="card-foot">
+            <span class="card-year">2025</span>
+            <span class="card-tag">Enquête</span>
+          </div>
+        </div>
+      </a>
+    </article>
+
+    <!-- 02 -->
+    <article class="card">
+      <div class="card-vid">
+        <iframe src="https://www.youtube.com/embed/1IAGHwi6mjY?rel=0&modestbranding=1"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+        </iframe>
+      </div>
+      <a class="card-body-link"
+         href="https://www.index.ngo/enquetes/homicide-de-renee-good-par-lice-analyse-3d-preliminaire/"
+         target="_blank" rel="noopener">
+        <div class="card-body">
+          <div class="card-outlet">Index NGO</div>
+          <h3 class="card-title">Homicide de Renée Good par l'ICE : Analyse 3D préliminaire</h3>
+          <p class="card-desc">Un agent ICE abat Renée Good, 37 ans, à Minneapolis le 7 janvier 2026. La reconstruction 3D d'Index contredit la thèse officielle de la légitime défense.</p>
+          <div class="card-foot">
+            <span class="card-year">2026</span>
+            <span class="card-tag">Enquête</span>
+          </div>
+        </div>
+      </a>
+    </article>
+
+    <!-- 03 — DISCLOSE -->
+    <article class="card">
+      <a class="card-link"
+         href="https://disclose.ngo/fr/article/general-electric-800-millions-euros-transferes-de-france-vers-des-paradis-fiscaux"
+         target="_blank" rel="noopener">
+        <div class="card-img" id="img-03">
+          <span class="card-fallback">Disclose</span>
+          <img src="https://disclose.ngo/assets/share/disclose_twitter.jpg"
+               alt="General Electric — Disclose"
+               loading="lazy"
+               onerror="document.getElementById('img-03').classList.add('img-failed')">
+        </div>
+        <div class="card-body">
+          <div class="card-outlet">Disclose</div>
+          <h3 class="card-title">General Electric : 800 millions d'euros transférés de France vers des paradis fiscaux</h3>
+          <p class="card-desc">Depuis le rachat d'Alstom Énergie en 2015, GE a organisé un système d'évasion fiscale entre la France, la Suisse et le Delaware — 150 à 300 M€ soustraits au fisc français.</p>
+          <div class="card-foot">
+            <span class="card-year">2022</span>
+            <span class="card-tag">Enquête</span>
+          </div>
+        </div>
+      </a>
+    </article>
+
+    <!-- 04 — Radio Tre / Rai -->
+    <article class="card">
+      <a class="card-link"
+         href="https://www.raiplaysound.it/playlist/unavocenellanottestoriadiunaradiopartigiana"
+         target="_blank" rel="noopener">
+        <div class="card-img" id="img-04">
+          <span class="card-fallback">Rai Radio 3</span>
+          <img src="https://pbs.twimg.com/media/FkFuuIqWQAEUdyq?format=jpg&name=large"
+               alt="Una voce nella notte"
+               loading="lazy"
+               onerror="document.getElementById('img-04').classList.add('img-failed')">
+        </div>
+        <div class="card-body">
+          <div class="card-outlet">Rai Radio 3 &nbsp;·&nbsp; Tre Soldi</div>
+          <h3 class="card-title">Una voce nella notte — storia di una radio partigiana</h3>
+          <p class="card-desc">Documentaire audio en quatre épisodes sur Radio Libertà, station partisane piémontaise active entre 1944 et la Libération.</p>
+          <div class="card-foot">
+            <span class="card-year">2022</span>
+            <span class="card-tag">Radio</span>
+          </div>
+        </div>
+      </a>
+    </article>
+
+    <!-- 05 -->
+    <article class="card">
+      <div class="card-vid">
+        <iframe src="https://www.youtube.com/embed/-tZ-8v0v9dU?rel=0&modestbranding=1"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+        </iframe>
+      </div>
+      <a class="card-body-link"
+         href="https://www.index.ngo/enquetes/homicide-de-bilal-m-la-reconstitution-3d-invalide-la-version-policiere/"
+         target="_blank" rel="noopener">
+        <div class="card-body">
+          <div class="card-outlet">Index NGO</div>
+          <h3 class="card-title">Homicide de Bilal M. : la reconstitution 3D invalide la version policière</h3>
+          <p class="card-desc">Abattu lors d'une expulsion à Pierrelaye en 2021, Bilal M. avait 34 ans. La reconstruction 3D d'Index contredit les témoignages policiers et la thèse de la légitime défense.</p>
+          <div class="card-foot">
+            <span class="card-year">2024</span>
+            <span class="card-tag">Enquête</span>
+          </div>
+        </div>
+      </a>
+    </article>
+
+    <!-- 06 -->
+    <article class="card">
+      <div class="card-vid">
+        <iframe src="https://www.youtube.com/embed/l_x8kLXWPsw?rel=0&modestbranding=1"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+        </iframe>
+      </div>
+      <a class="card-body-link"
+         href="https://www.lemediatv.fr/emissions/2019/hong-kong-si-nous-brulons-vous-brulerez-avec-nous-2Y1h91iPTmKznlM8HSdZrA"
+         target="_blank" rel="noopener">
+        <div class="card-body">
+          <div class="card-outlet">Le Média</div>
+          <h3 class="card-title">Hong Kong : "Si nous brûlons, vous brûlerez avec nous"</h3>
+          <p class="card-desc">Documentaire sur le mouvement de protestation hongkongais, tourné auprès des jeunes militants en première ligne.</p>
+          <div class="card-foot">
+            <span class="card-year">2019</span>
+            <span class="card-tag">Documentaire</span>
+          </div>
+        </div>
+      </a>
+    </article>
+
+    <!-- 07 -->
+    <article class="card">
+      <a class="card-link"
+         href="https://ilmanifesto.it/processi-in-serie-ai-rivoltosi-tribunali-come-fabbriche"
+         target="_blank" rel="noopener">
+        <div class="card-img" id="img-07">
+          <span class="card-fallback">Il Manifesto</span>
+          <img src="https://static.ilmanifesto.it/2022/03/logo-mediakit-il-manifesto.png"
+               alt="Processi in serie ai rivoltosi"
+               loading="lazy"
+               onerror="document.getElementById('img-07').classList.add('img-failed')">
+        </div>
+        <div class="card-body">
+          <div class="card-outlet">Il Manifesto</div>
+          <h3 class="card-title">Processi in serie ai rivoltosi, tribunali come fabbriche</h3>
+          <p class="card-desc">À Nanterre, jusqu'à 30 procès par jour après les émeutes. Le ministre Dupond-Moretti réclame une justice « rapide, sévère et systématique ».</p>
+          <div class="card-foot">
+            <span class="card-year">2023</span>
+            <span class="card-tag">Presse</span>
+          </div>
+        </div>
+      </a>
+    </article>
+
+    <!-- 08 -->
+    <article class="card">
+      <div class="card-vid">
+        <iframe src="https://www.youtube.com/embed/u2E3icO6C5Q?rel=0&modestbranding=1"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+        </iframe>
+      </div>
+      <a class="card-body-link"
+         href="https://www.lemediatv.fr/emissions/2020/liban-apres-la-catastrophe-entre-colere-et-auto-organisation-1hkdxzY8TzCZCpc0p5p1fw"
+         target="_blank" rel="noopener">
+        <div class="card-body">
+          <div class="card-outlet">Le Média</div>
+          <h3 class="card-title">Liban : après la catastrophe, entre colère et auto-organisation</h3>
+          <p class="card-desc">Reportage au lendemain de l'explosion du port de Beyrouth le 4 août 2020 — colère populaire, défaillance de l'État, émergence de l'auto-organisation.</p>
+          <div class="card-foot">
+            <span class="card-year">2020</span>
+            <span class="card-tag">Documentaire</span>
+          </div>
+        </div>
+      </a>
+    </article>
+
+    <!-- 09 -->
+    <article class="card">
+      <a class="card-link"
+         href="https://www.nouvelobs.com/monde/20180808.OBS0658/comment-la-turquie-a-profite-de-l-offensive-contre-les-kurdes-pour-detruire-leur-capitale.html"
+         target="_blank" rel="noopener">
+        <div class="card-img" id="img-09">
+          <span class="card-fallback">Le Nouvel Obs</span>
+          <img src="https://www.institutkurde.org/info/images/l/actualite_1269.jpg"
+               alt="Diyarbakır — Sur détruit"
+               loading="lazy"
+               onerror="document.getElementById('img-09').classList.add('img-failed')">
+        </div>
+        <div class="card-body">
+          <div class="card-outlet">Le Nouvel Obs</div>
+          <h3 class="card-title">Comment la Turquie a profité de l'offensive contre les Kurdes pour détruire leur capitale</h3>
+          <p class="card-desc">Le gouvernement turc a rasé le quartier historique de Sur à Diyarbakir sous couvert du conflit avec le PKK, expropiant des milliers d'habitants.</p>
+          <div class="card-foot">
+            <span class="card-year">2018</span>
+            <span class="card-tag">Reportage</span>
+          </div>
+        </div>
+      </a>
+    </article>
+
+    <!-- 10 -->
+    <article class="card">
+      <a class="card-link"
+         href="https://www.internazionale.it/video/2018/05/02/i-dannati-di-ventimiglia"
+         target="_blank" rel="noopener">
+        <div class="card-img" id="img-10">
+          <span class="card-fallback">Internazionale</span>
+          <img src="Internazionale.png"
+               alt="I dannati di Ventimiglia"
+               loading="lazy"
+               onerror="document.getElementById('img-10').classList.add('img-failed')">
+        </div>
+        <div class="card-body">
+          <div class="card-outlet">Internazionale</div>
+          <h3 class="card-title">I dannati di Ventimiglia</h3>
+          <p class="card-desc">À la frontière franco-italienne : migrants bloqués, mineurs reconduits, passeurs. Reportage vidéo sur une frontière sous tension permanente.</p>
+          <div class="card-foot">
+            <span class="card-year">2018</span>
+            <span class="card-tag">Reportage</span>
+          </div>
+        </div>
+      </a>
+    </article>
+
+    <!-- 11 -->
+    <article class="card">
+      <a class="card-link"
+         href="https://www.mediapart.fr/journal/international/260116/crash-aerien-dustica-tragedie-italienne-missile-francais"
+         target="_blank" rel="noopener">
+        <div class="card-img" id="img-11">
+          <span class="card-fallback">Canal+ · CAPA</span>
+          <img src="Ustica.png"
+               alt="Ustica"
+               loading="lazy"
+               onerror="document.getElementById('img-11').classList.add('img-failed')">
+        </div>
+        <div class="card-body">
+          <div class="card-outlet">CAPA, Canal+ / Mediapart</div>
+          <h3 class="card-title">Ustica : Une bavure française?</h3>
+          <p class="card-desc">Investigation sur les responsabilités françaises dans le crash aérien d'Ustica du 27 juin 1980.</p>
+          <div class="card-foot">
+            <span class="card-year">2015</span>
+            <span class="card-tag">Enquête</span>
+          </div>
+        </div>
+      </a>
+    </article>
+
+    <!-- 12 -->
+    <article class="card">
+      <a class="card-link"
+         href="https://www.rile.space/books/eclairages-12-entretiens-et-analyses-sur-les-violences-detat"
+         target="_blank" rel="noopener">
+        <div class="card-img" id="img-12">
+          <span class="card-fallback">RILE*books</span>
+          <img src="https://rile.space/storage/4182/01KKKB7S960DNKKHJPZVPKGC96.jpg"
+               alt="Éclairages"
+               loading="lazy"
+               onerror="document.getElementById('img-12').classList.add('img-failed')">
+        </div>
+        <div class="card-body">
+          <div class="card-outlet">Index NGO &nbsp;·&nbsp; RILE*books</div>
+          <h3 class="card-title">Éclairages — 12 entretiens sur les violences d'État</h3>
+          <p class="card-desc">Co-direction éditoriale. Sociologues, juristes, journalistes et militants sur les formes contemporaines de violence institutionnelle.</p>
+          <div class="card-foot">
+            <span class="card-year">2026</span>
+            <span class="card-tag">Livre</span>
+          </div>
+        </div>
+      </a>
+    </article>
+
+  </div><!-- /works-grid -->
+
+  <a class="works-more" href="https://muckrack.com/filippo-ortona" target="_blank" rel="noopener">
+    Portfolio complet &nbsp;→
+  </a>
+</section>
+
+
+<!-- ── À PROPOS ── -->
+<section id="apropos">
+  <div class="section-label">À propos</div>
+  <div class="about-grid">
+
+    <div class="about-identity">
+      <div class="about-name">Filippo Ortona</div>
+      <div class="about-role">Journaliste &nbsp;·&nbsp; JRI</div>
+    </div>
+
+    <div>
+      <div class="about-text">
+        <p>Journaliste et reporter d'images basé à Paris.</p>
+        <p>Je collabore avec l'ONG d'investigation <a href="https://www.index.ngo" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px">Index</a> et le quotidien italien <a href="https://www.ilmanifesto.it" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px">Il Manifesto</a>.</p>
+        <p>Mes travaux ont été publiés sur, entre autres :</p>
+      </div>
+
+      <div class="logos-grid">
+
+        <a href="https://lemonde.fr" target="_blank" rel="noopener" class="logo-item" title="Le Monde">
+          <img src="https://logo.clearbit.com/lemonde.fr" alt="" loading="lazy"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+          <span class="logo-text">Le Monde</span>
+        </a>
+
+        <a href="https://mediapart.fr" target="_blank" rel="noopener" class="logo-item" title="Mediapart">
+          <img src="https://logo.clearbit.com/mediapart.fr" alt="" loading="lazy"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+          <span class="logo-text">Mediapart</span>
+        </a>
+
+        <a href="https://liberation.fr" target="_blank" rel="noopener" class="logo-item" title="Libération">
+          <img src="https://logo.clearbit.com/liberation.fr" alt="" loading="lazy"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+          <span class="logo-text">Libération</span>
+        </a>
+
+        <a href="https://disclose.ngo" target="_blank" rel="noopener" class="logo-item" title="Disclose">
+          <img src="https://logo.clearbit.com/disclose.ngo" alt="" loading="lazy"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+          <span class="logo-text">Disclose</span>
+        </a>
+
+        <a href="https://www.internazionale.it" target="_blank" rel="noopener" class="logo-item" title="Internazionale">
+          <img src="https://logo.clearbit.com/internazionale.it" alt="" loading="lazy"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+          <span class="logo-text">Internazionale</span>
+        </a>
+
+        <a href="https://www.middleeasteye.net" target="_blank" rel="noopener" class="logo-item" title="Middle East Eye">
+          <img src="https://logo.clearbit.com/middleeasteye.net" alt="" loading="lazy"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+          <span class="logo-text">Middle East Eye</span>
+        </a>
+
+        <a href="https://www.nouvelobs.com" target="_blank" rel="noopener" class="logo-item" title="Le Nouvel Obs">
+          <img src="https://logo.clearbit.com/nouvelobs.com" alt="" loading="lazy"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+          <span class="logo-text">Le Nouvel Obs</span>
+        </a>
+
+        <a href="https://www.ilmanifesto.it" target="_blank" rel="noopener" class="logo-item" title="Il Manifesto">
+          <img src="https://logo.clearbit.com/ilmanifesto.it" alt="" loading="lazy"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+          <span class="logo-text">Il Manifesto</span>
+        </a>
+
+        <a href="https://www.espresso.repubblica.it" target="_blank" rel="noopener" class="logo-item" title="L'Espresso">
+          <img src="https://logo.clearbit.com/espresso.repubblica.it" alt="" loading="lazy"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+          <span class="logo-text">L'Espresso</span>
+        </a>
+
+        <a href="https://www.canalplus.com" target="_blank" rel="noopener" class="logo-item" title="Canal+">
+          <img src="https://logo.clearbit.com/canalplus.com" alt="" loading="lazy"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+          <span class="logo-text">Canal+</span>
+        </a>
+
+        <a href="https://www.rai.it" target="_blank" rel="noopener" class="logo-item" title="Rai">
+          <img src="https://logo.clearbit.com/rai.it" alt="" loading="lazy"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+          <span class="logo-text">Rai</span>
+        </a>
+
+        <a href="https://www.lemediatv.fr" target="_blank" rel="noopener" class="logo-item" title="Le Média">
+          <img src="https://logo.clearbit.com/lemediatv.fr" alt="" loading="lazy"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+          <span class="logo-text">Le Média</span>
+        </a>
+
+        <a href="https://orientxxi.info" target="_blank" rel="noopener" class="logo-item" title="Orient XXI">
+          <img src="https://logo.clearbit.com/orientxxi.info" alt="" loading="lazy"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+          <span class="logo-text">Orient XXI</span>
+        </a>
+
+      </div><!-- /logos-grid -->
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ── CONTACT ── -->
+<section id="contact">
+  <div class="section-label">Contact</div>
+
+  <div class="contact-socials">
+
+    <!-- Email — remplacez votre@email.com par votre adresse réelle -->
+    <a class="social-btn" href="mailto:filippesi@protonmail.com">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <path d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/>
+      </svg>
+      <span>Email</span>
+    </a>
+
+    <a class="social-btn" href="https://x.com/filipp3si" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+      </svg>
+      <span>Twitter / X</span>
+    </a>
+
+    <a class="social-btn" href="https://www.instagram.com/filipp_3si/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+      </svg>
+      <span>Instagram</span>
+    </a>
+
+    <a class="social-btn" href="https://www.linkedin.com/in/filippo-ortona-868843380/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+      </svg>
+      <span>LinkedIn</span>
+    </a>
+
+  </div>
+
+  <div class="contact-links">
+    <a class="contact-link" href="https://muckrack.com/filippo-ortona" target="_blank" rel="noopener">Muck Rack</a>
+    <a class="contact-link" href="https://linktr.ee/filipp3si" target="_blank" rel="noopener">Linktree</a>
+  </div>
+</section>
+
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-name">Filippo Ortona</div>
+  <a class="footer-handle" href="https://x.com/filipp3si" target="_blank" rel="noopener">@filipp3si</a>
+</footer>
+
+
+</body>
+</html>
