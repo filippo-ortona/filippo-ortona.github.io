@@ -100,6 +100,37 @@
       border: none;
     }
 
+    .video-poster {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      background-size: cover;
+      background-position: center;
+      background-color: #0c0c0a;
+    }
+
+    .video-poster::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.35);
+    }
+
+    .play-btn {
+      position: relative;
+      z-index: 1;
+      width: 72px;
+      height: 72px;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .video-poster:hover .play-btn {
+      transform: scale(1.12);
+    }
+
     .hero-name {
       font-family: var(--serif);
       font-size: clamp(16px, 2.2vw, 30px);
@@ -559,11 +590,14 @@
 
   <div class="hero-video-wrap">
     <div class="hero-video-inner">
-      <iframe
-        src="https://player.vimeo.com/video/646586751?color=e6e3dd&title=0&byline=0&portrait=0&dnt=1"
-        allow="autoplay; fullscreen; picture-in-picture"
-        allowfullscreen>
-      </iframe>
+      <div class="video-poster" id="heroPoster">
+        <div class="play-btn">
+          <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="40" cy="40" r="39" stroke="white" stroke-opacity="0.75" stroke-width="1.5"/>
+            <polygon points="33,24 58,40 33,56" fill="white" fill-opacity="0.92"/>
+          </svg>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -962,6 +996,33 @@
   <a class="footer-handle" href="https://x.com/filipp3si" target="_blank" rel="noopener">@filipp3si</a>
 </footer>
 
+
+<script>
+  (function () {
+    const VIMEO_ID = '646586751';
+    const poster   = document.getElementById('heroPoster');
+
+    // Fetch Vimeo thumbnail via oEmbed (no API key needed for public videos)
+    fetch('https://vimeo.com/api/oembed.json?url=https://vimeo.com/' + VIMEO_ID)
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        if (d.thumbnail_url) {
+          // Use the largest version by stripping size suffix
+          var thumb = d.thumbnail_url.replace(/_\d+$/, '');
+          poster.style.backgroundImage = 'url(' + thumb + ')';
+        }
+      })
+      .catch(function () { /* no thumbnail, dark bg is fine */ });
+
+    poster.addEventListener('click', function () {
+      var inner = poster.parentElement;
+      inner.innerHTML =
+        '<iframe src="https://player.vimeo.com/video/' + VIMEO_ID +
+        '?color=e6e3dd&title=0&byline=0&portrait=0&dnt=1&autoplay=1"' +
+        ' allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>';
+    });
+  })();
+</script>
 
 </body>
 </html>
